@@ -15,7 +15,7 @@ Steps
 
 Add CCup.h to your project and off you go!
 
-'''c
+<code>
 #include <stdio.h>
 #include "CCup.h"
 
@@ -40,7 +40,6 @@ int main() {
 
   while (true) {
   }
-
   return 0;
 }
-'''
+</code>
