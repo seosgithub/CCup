@@ -7,7 +7,7 @@ C unit testing that makes sense based on jasmine, nodeunit, etc.
 
 Supports asynchronous testing!  (Without the headache).
 
-So unit testing in C sucks.  (That is, unti now!)
+So unit testing in C sucks.  (That is, until now!)
 ====
 
 Steps
@@ -15,7 +15,7 @@ Steps
 
 Add CCup.h to your project and off you go!
 
-<code>
+'''c
 #include <stdio.h>
 #include "CCup.h"
 
@@ -42,4 +42,4 @@ int main() {
   }
   return 0;
 }
-</code>
+'''
