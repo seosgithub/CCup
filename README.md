@@ -15,6 +15,7 @@ Steps
 
 Add CCup.h to your project and off you go!
 
+'''c
 #include <stdio.h>
 #include "CCup.h"
 
@@ -42,3 +43,4 @@ int main() {
 
   return 0;
 }
+'''
