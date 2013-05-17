@@ -10,9 +10,6 @@ Supports asynchronous testing!  (Without the headache).
 So unit testing in C sucks.  (That is, until now!)
 ====
 
-Steps
-==
-
 Add CCup.h to your project and off you go!
 
 '''c
