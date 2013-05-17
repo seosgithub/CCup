@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/sotownsend/Dev/CCup/CCup.h
+stdio.h
+-
+stdlib.h
+-
+pthread.h
+-
+semaphore.h
+-
+unistd.h
+-
+errno.h
+-
+
+/Users/sotownsend/Dev/CCup/main.cpp
+stdio.h
+-
+CCup.h
+/Users/sotownsend/Dev/CCup/CCup.h
+
