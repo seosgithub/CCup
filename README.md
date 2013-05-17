@@ -1,4 +1,4 @@
-CCup
+CCup - The best C unit testing framework.
 ====
 
 Authors: Seo Townsend 2013
