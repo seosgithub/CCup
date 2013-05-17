@@ -1,4 +1,4 @@
-CCup - Simply the best, no bullshit, funnest, and most elegant C unit testing framework.
+CCup - Simply, the best C unit testing framework.
 ====
 
 Authors: Seo Townsend 2013
