@@ -13,16 +13,14 @@ Supports asynchronous testing!  (Without the headache).
 
 int main() {
   CCup(function() {
-      Describe("test", function() {
-        It("hey", function() {
-          IsEqual(1, 1);
-          IsEqual(1, 1);
+      Describe("My heart", function() {
+        It("is real", function() {
           IsEqual(1, 1);
         });
 
+        //Test async code
         SetTimeout(2);
-
-        It("Also does so", _function() {
+        It("does beat", _function() {
           IsEqual(1, 1);
           sleep(1);
           done();
