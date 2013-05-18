@@ -190,7 +190,7 @@ void LazyLoadQue(std::string name) {
   }
 }
 
-void SendIt(std::string name, const char *data, int len) {
+void CCSend(std::string name, const char *data, int len) {
   LazyLoadQue(name);
   
   pthread_mutex_lock(&inboundMessageMutexes[name]);
@@ -204,7 +204,7 @@ void SendIt(std::string name, const char *data, int len) {
   pthread_mutex_unlock(&inboundMessageMutexes[name]);
 }
 
-CCupMessage_t WaitForIt(std::string name) {
+CCupMessage_t CCGet(std::string name) {
   LazyLoadQue(name);
 
   CCupMessage_t message;

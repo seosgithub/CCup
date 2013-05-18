@@ -17,8 +17,8 @@ int main() {
 
           //Wait for a message
           const char str[] = "lol?";
-          SendIt("test", str, 5);
-          CCupMessage_t message = WaitForIt("test");
+          CCSend("test", str, 5);
+          CCupMessage_t message = CCGet("test");
           IsTrue(!strcmp(message.data, "lol?"));
 
           done();
