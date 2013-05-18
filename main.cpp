@@ -14,7 +14,13 @@ int main() {
 
         It("Also does so", _function() {
           IsEqual(1, 1);
-          sleep(1);
+
+          //Wait for a message
+          const char str[] = "lol?";
+          SendIt("test", str, 5);
+          CCupMessage_t message = WaitForIt("test");
+          IsTrue(!strcmp(message.data, "lol?"));
+
           done();
         });
       });

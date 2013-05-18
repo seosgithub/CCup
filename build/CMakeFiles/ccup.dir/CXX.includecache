@@ -19,6 +19,12 @@ unistd.h
 -
 errno.h
 -
+map
+-
+string
+-
+queue
+-
 
 /Users/sotownsend/Dev/CCup/main.cpp
 stdio.h
