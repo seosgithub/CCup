@@ -73,7 +73,7 @@ void It(const char *message, UnitTests tests) {
   printf("\n");
 }
 
-void Done() {
+void CCDone() {
   sem_post(doneSemaphore);
   alarm(0);
 }
@@ -83,7 +83,7 @@ void It(const char *message, UnitTestsWithDone tests) {
   alarm(doneTimeout);
   printf("\t+%s ", message);
   fflush(stdout);
-  tests(Done);
+  tests(CCDone);
   sem_wait(doneSemaphore);
   printf("\n");
 }
@@ -227,7 +227,7 @@ void CCSelfTest() {
       CCupMessage_t msg = CCGet("CCSelfTest");
 
       IsEqualStrings(msg.data, "This is a message");
-      Done();
+      CCDone();
     });
   });
 }
