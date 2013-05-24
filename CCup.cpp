@@ -263,7 +263,7 @@ void CCSelfTest() {
       CCupMessage_t msg = CCGet("CCSelfTest");
 
       IsEqualString(msg.data, "This is a message");
-      CCDone();
+      done();
     });
 
     It("Can check data equality", function() {

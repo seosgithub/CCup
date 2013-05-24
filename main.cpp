@@ -19,11 +19,10 @@ int main() {
 
           //Wait for a message
           const char str[] = "lol?";
-          CCSend("test", str, 5);
+          for (int i = 0; i < 1000000000; ++i)
+            CCSend("test", str, 5);
           CCupMessage_t message = CCGet("test");
           IsTrue(!strcmp(message.data, "lol?"));
-
-          done();
         });
       });
   });

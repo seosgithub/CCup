@@ -29,8 +29,6 @@ void Describe(const char *message, UnitTests tests);
 //It 'does' something (Non-async)
 void It(const char *message, UnitTests tests);
 
-void CCDone();
-
 //It does something and waits for CCDone
 void It(const char *message, UnitTestsWithDone tests);
 
