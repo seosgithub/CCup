@@ -88,6 +88,18 @@ void It(const char *message, UnitTestsWithDone tests) {
   printf("\n");
 }
 
+//Error Data Formatters
+//#######################################
+//Output array as integers to stderr
+void ErrorArray(const unsigned char *a, int len) {
+  fprintf(stderr, "[");
+  for (int i = 0; i < len; ++i) {
+    fprintf(stderr, "%i", a[i]);
+
+    if (i < len-1) fprintf(stderr, ", ");
+  }
+  fprintf(stderr, "]");
+}
 
 //Asserts
 //#######################################
@@ -107,6 +119,30 @@ void IsEqualString(const char *a, const char *b) {
     printf("✖\n");
     fprintf(stderr, "\n---------------------------------------\n");
     fprintf(stderr, "Test failed!  %s != %s", a, b);
+    fprintf(stderr, "\n---------------------------------------\n");
+    exit(EXIT_FAILURE);
+  }
+  printf("✔");
+}
+
+void IsEqualData(const unsigned char *a, const unsigned char *b, int len) {
+  int isEqual = 1;
+  for (int i = 0; i < len; ++i) {
+    if (a[i] != b[i]) {
+      isEqual = 0;
+      break;
+    }
+  }
+
+  if (!isEqual) {
+    printf("✖\n");
+    fprintf(stderr, "\n---------------------------------------\n");
+    fprintf(stderr, "Test failed! (The following are not equal)\n");
+
+    ErrorArray(a, len);
+    fprintf(stderr, "\n");
+    ErrorArray(b, len);
+
     fprintf(stderr, "\n---------------------------------------\n");
     exit(EXIT_FAILURE);
   }
@@ -228,6 +264,14 @@ void CCSelfTest() {
 
       IsEqualString(msg.data, "This is a message");
       CCDone();
+    });
+
+    It("Can check data equality", function() {
+      unsigned char a[] = {0, 1, 2, 3, 4};
+      unsigned char b[] = {0, 1, 2, 3, 4};
+      IsEqualData(a, b, sizeof(a));
+      b[0] = 3;
+      IsEqualData(b, a, sizeof(a));
     });
   });
 }
