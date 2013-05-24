@@ -36,6 +36,7 @@ void It(const char *message, UnitTestsWithDone tests);
 
 //Assert equality
 void IsEqual(float a, float b);
+void IsEqualString(const char *a, const char *b);
 
 //Assert it is true
 void IsTrue(int a);
