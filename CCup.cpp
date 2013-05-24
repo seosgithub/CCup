@@ -164,7 +164,7 @@ void IsTrue(int a) {
 //######################################
 std::map<std::string, sem_t *> inboundMessageSemaphores;
 std::map<std::string, pthread_mutex_t> inboundMessageMutexes;
-std::vector<std::string> activeQueNames; //Currently active que names
+std::vector<std::string> inactiveQueNames; //Currently active que names
 
 typedef std::queue<CCupMessage_t> MessageQue_t;
 std::map<std::string, MessageQue_t> inboundMessages;
@@ -221,11 +221,8 @@ void LazyLoadQue(std::string name) {
 void CCSend(std::string name, const char *data, int len) {
   LazyLoadQue(name);
 
-  if (std::find(activeQueNames.begin(), activeQueNames.end(), name) == activeQueNames.end()) {
-    puts("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-    printf("Warning: Attempting CCGet when the msg %s is not on.  Enable with CCOn(%s);\n", name.c_str(), name.c_str());
-    puts("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-
+  //This is an inactive que
+  if (std::find(inactiveQueNames.begin(), inactiveQueNames.end(), name) != inactiveQueNames.end()) {
     return;
   }
   
@@ -240,30 +237,19 @@ void CCSend(std::string name, const char *data, int len) {
   pthread_mutex_unlock(&inboundMessageMutexes[name]);
 }
 
-void CCOn(std::string name) {
-  activeQueNames.push_back(name);
+void CCOff(std::string name) {
+  inactiveQueNames.push_back(name);
 }
 
-void CCOff(std::string name) {
-  std::vector<std::string>::iterator pos = std::find(activeQueNames.begin(), activeQueNames.end(), name);
+void CCOn(std::string name) {
+  std::vector<std::string>::iterator pos = std::find(inactiveQueNames.begin(), inactiveQueNames.end(), name);
 
-  if (pos == activeQueNames.end()) {
-    puts("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-    printf("Warning: Attempting CCOff when the msg %s is not on.  Enable with CCOn(%s);\n", name.c_str(), name.c_str());
-    puts("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-  }
-
-  activeQueNames.erase(pos);
+  if (pos != inactiveQueNames.end())
+    inactiveQueNames.erase(pos);
 }
 
 CCupMessage_t CCGet(std::string name) {
   LazyLoadQue(name);
-
-  if (std::find(activeQueNames.begin(), activeQueNames.end(), name) == activeQueNames.end()) {
-    puts("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-    printf("Warning: Attempting CCGet when the msg %s is not on.  Enable with CCOn(%s);\n", name.c_str(), name.c_str());
-    puts("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-  }
 
   CCupMessage_t message;
 
@@ -299,6 +285,8 @@ void CCSelfTest() {
     });
 
     It("Can start listening for messages and ignore some", _function() {
+      CCOff("CCSelfTest1");
+
       const char message[] = "Should not be here";
       CCSend("CCSelfTest1", message, sizeof(message));
 
@@ -315,8 +303,6 @@ void CCSelfTest() {
     });
 
     It("Can start listening for messages, ignore, then restart again", _function() {
-      CCOn("CCSelfTest3");
-
       const char message[] = "Message 1";
       CCSend("CCSelfTest3", message, sizeof(message));
 

@@ -5,7 +5,6 @@ int main() {
   CCup(function() {
       CCSelfTest();
 
-      CCOn("test");
       Describe("test", function() {
         It("hey", function() {
           IsEqual(1, 1);
