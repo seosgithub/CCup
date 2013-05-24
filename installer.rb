@@ -6,7 +6,7 @@ def install
   system 'make'
   Dir.chdir '../'
   system 'cp CCup.h /usr/local/include'
-  system 'cp build/libccup.a /usr/local/include'
+  system 'cp build/libccup.a /usr/local/lib'
 end
 
 def remove
