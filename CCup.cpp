@@ -164,6 +164,7 @@ void IsTrue(int a) {
 //######################################
 std::map<std::string, sem_t *> inboundMessageSemaphores;
 std::map<std::string, pthread_mutex_t> inboundMessageMutexes;
+std::vector<std::string> activeQueNames; //Currently active que names
 
 typedef std::queue<CCupMessage_t> MessageQue_t;
 std::map<std::string, MessageQue_t> inboundMessages;
@@ -219,6 +220,14 @@ void LazyLoadQue(std::string name) {
 
 void CCSend(std::string name, const char *data, int len) {
   LazyLoadQue(name);
+
+  if (std::find(activeQueNames.begin(), activeQueNames.end(), name) == activeQueNames.end()) {
+    puts("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    printf("Warning: Attempting CCGet when the msg %s is not on.  Enable with CCOn(%s);\n", name.c_str(), name.c_str());
+    puts("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
+    return;
+  }
   
   pthread_mutex_lock(&inboundMessageMutexes[name]);
 
@@ -231,8 +240,30 @@ void CCSend(std::string name, const char *data, int len) {
   pthread_mutex_unlock(&inboundMessageMutexes[name]);
 }
 
+void CCOn(std::string name) {
+  activeQueNames.push_back(name);
+}
+
+void CCOff(std::string name) {
+  std::vector<std::string>::iterator pos = std::find(activeQueNames.begin(), activeQueNames.end(), name);
+
+  if (pos == activeQueNames.end()) {
+    puts("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    printf("Warning: Attempting CCOff when the msg %s is not on.  Enable with CCOn(%s);\n", name.c_str(), name.c_str());
+    puts("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+  }
+
+  activeQueNames.erase(pos);
+}
+
 CCupMessage_t CCGet(std::string name) {
   LazyLoadQue(name);
+
+  if (std::find(activeQueNames.begin(), activeQueNames.end(), name) == activeQueNames.end()) {
+    puts("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    printf("Warning: Attempting CCGet when the msg %s is not on.  Enable with CCOn(%s);\n", name.c_str(), name.c_str());
+    puts("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+  }
 
   CCupMessage_t message;
 
@@ -257,6 +288,7 @@ CCupMessage_t CCGet(std::string name) {
 void CCSelfTest() {
   Describe("CCup Test", function() {
     It("Can send and receive", _function() {
+      CCOn("CCSelfTest");
       const char message[] = "This is a message";
       CCSend("CCSelfTest", message, sizeof(message));
 
@@ -265,6 +297,47 @@ void CCSelfTest() {
       IsEqualString(msg.data, "This is a message");
       done();
     });
+
+    It("Can start listening for messages and ignore some", _function() {
+      const char message[] = "Should not be here";
+      CCSend("CCSelfTest1", message, sizeof(message));
+
+      CCOn("CCSelfTest1");
+
+      const char message2[] = "This is a message";
+      CCSend("CCSelfTest1", message2, sizeof(message2));
+
+      CCupMessage_t msg = CCGet("CCSelfTest1");
+
+      IsEqualString(msg.data, "This is a message");
+
+      done();
+    });
+
+    It("Can start listening for messages, ignore, then restart again", _function() {
+      CCOn("CCSelfTest3");
+
+      const char message[] = "Message 1";
+      CCSend("CCSelfTest3", message, sizeof(message));
+
+      CCOff("CCSelfTest3");
+
+      const char message2[] = "Should not be here";
+      CCSend("CCSelfTest3", message2, sizeof(message2));
+
+      CCOn("CCSelfTest3");
+
+      const char message3[] = "Message 2";
+      CCSend("CCSelfTest3", message3, sizeof(message3));
+
+      CCupMessage_t msg = CCGet("CCSelfTest3");
+      IsEqualString(msg.data, "Message 1");
+      msg = CCGet("CCSelfTest3");
+      IsEqualString(msg.data, "Message 2");
+
+      done();
+    });
+
 
     It("Can check data equality", function() {
       unsigned char a[] = {0, 1, 2, 3, 4};

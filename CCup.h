@@ -60,4 +60,8 @@ void CCSend(std::string name, const char *data, int len);
 //Get a message (Block until)
 CCupMessage_t CCGet(std::string name);
 
+//Enable / Disable a message
+void CCOn(std::string name);
+void CCOff(std::string name);
+
 #endif
