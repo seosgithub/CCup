@@ -20,5 +20,5 @@ if ARGV[0] == "install"
 elsif ARGV[0] == "remove"
   remove
 else
-  puts "Type install or remove"
+  install
 end
