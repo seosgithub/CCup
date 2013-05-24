@@ -102,7 +102,7 @@ void IsEqual(float a, float b) {
   printf("✔");
 }
 
-void IsEqualStrings(const char *a, const char *b) {
+void IsEqualString(const char *a, const char *b) {
   if (strcmp(a, b)) {
     printf("✖\n");
     fprintf(stderr, "\n---------------------------------------\n");
@@ -226,7 +226,7 @@ void CCSelfTest() {
 
       CCupMessage_t msg = CCGet("CCSelfTest");
 
-      IsEqualStrings(msg.data, "This is a message");
+      IsEqualString(msg.data, "This is a message");
       CCDone();
     });
   });
