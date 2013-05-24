@@ -11,6 +11,9 @@
 #include <string>
 #include <queue>
 
+//Useful to check in files to see what sections to exclude
+#define CCUP
+
 typedef void (*DoneFunction)();
 typedef void (^UnitTests)();
 typedef void (^UnitTestsWithDone)(DoneFunction);
