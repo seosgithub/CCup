@@ -1,26 +1,10 @@
-#ifndef CCUP_H_
-#define CCUP_H_
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <pthread.h>
-#include <semaphore.h>
-#include <unistd.h>
-#include <errno.h>
-#include <map>
-#include <string>
-#include <queue>
-
-typedef void (*DoneFunction)();
-typedef void (^UnitTests)();
-typedef void (^UnitTestsWithDone)(DoneFunction);
+#include "CCup.h"
 
 static int doneTimeout = 1;  //Number of seconds to wait for done to be called
 void SetTimeout(int x) {
   doneTimeout = x;
 }
 
-//Mutex lockout to wait for done function
 static sem_t *doneSemaphore;
 
 #define function() ^()
@@ -34,6 +18,7 @@ void HandleFailedDone(int) {
   fprintf(stderr, "\n---------------------------------------\n");
   exit(EXIT_FAILURE);
 }
+
 //Thread that handles the actual unit tests
 void *CCupThread(void *_tests) {
   UnitTests tests = (UnitTests)_tests;
@@ -88,7 +73,7 @@ void It(const char *message, UnitTests tests) {
   printf("\n");
 }
 
-void done() {
+void Done() {
   sem_post(doneSemaphore);
   alarm(0);
 }
@@ -98,7 +83,7 @@ void It(const char *message, UnitTestsWithDone tests) {
   alarm(doneTimeout);
   printf("\t+%s ", message);
   fflush(stdout);
-  tests(done);
+  tests(Done);
   sem_wait(doneSemaphore);
   printf("\n");
 }
@@ -130,11 +115,6 @@ void IsTrue(int a) {
 
 //Messaging
 //######################################
-struct CCupMessage_t {
-  int len;
-  char data[200];
-};
-
 std::map<std::string, sem_t *> inboundMessageSemaphores;
 std::map<std::string, pthread_mutex_t> inboundMessageMutexes;
 
@@ -224,5 +204,3 @@ CCupMessage_t CCGet(std::string name) {
   pthread_mutex_unlock(&inboundMessageMutexes[name]);
   return message;
 }
-
-#endif

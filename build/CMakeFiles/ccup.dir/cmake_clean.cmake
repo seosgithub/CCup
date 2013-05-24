@@ -1,7 +1,7 @@
 FILE(REMOVE_RECURSE
-  "CMakeFiles/ccup.dir/main.cpp.o"
-  "ccup.pdb"
-  "ccup"
+  "CMakeFiles/ccup.dir/CCup.cpp.o"
+  "libccup.pdb"
+  "libccup.a"
 )
 
 # Per-language clean rules from dependency scanning.

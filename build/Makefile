@@ -42,10 +42,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/local/Cellar/cmake/2.8.10.2/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/sotownsend/Dev/CCup
+CMAKE_SOURCE_DIR = /Users/seo/Dev/CCup
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/sotownsend/Dev/CCup/build
+CMAKE_BINARY_DIR = /Users/seo/Dev/CCup/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -72,9 +72,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/sotownsend/Dev/CCup/build/CMakeFiles /Users/sotownsend/Dev/CCup/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/seo/Dev/CCup/build/CMakeFiles /Users/seo/Dev/CCup/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/sotownsend/Dev/CCup/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/seo/Dev/CCup/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -114,12 +114,52 @@ ccup/fast:
 	$(MAKE) -f CMakeFiles/ccup.dir/build.make CMakeFiles/ccup.dir/build
 .PHONY : ccup/fast
 
+#=============================================================================
+# Target rules for targets named main
+
+# Build rule for target.
+main: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 main
+.PHONY : main
+
+# fast build rule for target.
+main/fast:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
+.PHONY : main/fast
+
+CCup.o: CCup.cpp.o
+.PHONY : CCup.o
+
+# target to build an object file
+CCup.cpp.o:
+	$(MAKE) -f CMakeFiles/ccup.dir/build.make CMakeFiles/ccup.dir/CCup.cpp.o
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/CCup.cpp.o
+.PHONY : CCup.cpp.o
+
+CCup.i: CCup.cpp.i
+.PHONY : CCup.i
+
+# target to preprocess a source file
+CCup.cpp.i:
+	$(MAKE) -f CMakeFiles/ccup.dir/build.make CMakeFiles/ccup.dir/CCup.cpp.i
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/CCup.cpp.i
+.PHONY : CCup.cpp.i
+
+CCup.s: CCup.cpp.s
+.PHONY : CCup.s
+
+# target to generate assembly for a file
+CCup.cpp.s:
+	$(MAKE) -f CMakeFiles/ccup.dir/build.make CMakeFiles/ccup.dir/CCup.cpp.s
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/CCup.cpp.s
+.PHONY : CCup.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) -f CMakeFiles/ccup.dir/build.make CMakeFiles/ccup.dir/main.cpp.o
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -127,7 +167,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) -f CMakeFiles/ccup.dir/build.make CMakeFiles/ccup.dir/main.cpp.i
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -135,7 +175,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) -f CMakeFiles/ccup.dir/build.make CMakeFiles/ccup.dir/main.cpp.s
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -146,7 +186,11 @@ help:
 	@echo "... depend"
 	@echo "... ccup"
 	@echo "... edit_cache"
+	@echo "... main"
 	@echo "... rebuild_cache"
+	@echo "... CCup.o"
+	@echo "... CCup.i"
+	@echo "... CCup.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

@@ -1,1 +1,2 @@
-/usr/bin/c++    -Werror -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/ccup.dir/main.cpp.o  -o ccup  
+/usr/bin/ar cr libccup.a  CMakeFiles/ccup.dir/CCup.cpp.o
+/usr/bin/ranlib libccup.a
