@@ -34,4 +34,4 @@ system 'clear'
 
 start 'Running'
 Dir.chdir '../'
-exec './build/ccup'
+exec './build/main'

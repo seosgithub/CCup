@@ -40,6 +40,10 @@ void IsEqual(float a, float b);
 //Assert it is true
 void IsTrue(int a);
 
+//Self Testing
+//######################################
+void CCSelfTest();
+
 //Messaging
 //######################################
 struct CCupMessage_t {

@@ -3,6 +3,8 @@
 
 int main() {
   CCup(function() {
+      CCSelfTest();
+
       Describe("test", function() {
         It("hey", function() {
           IsEqual(1, 1);

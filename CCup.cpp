@@ -102,6 +102,17 @@ void IsEqual(float a, float b) {
   printf("✔");
 }
 
+void IsEqualStrings(const char *a, const char *b) {
+  if (strcmp(a, b)) {
+    printf("✖\n");
+    fprintf(stderr, "\n---------------------------------------\n");
+    fprintf(stderr, "Test failed!  %s != %s", a, b);
+    fprintf(stderr, "\n---------------------------------------\n");
+    exit(EXIT_FAILURE);
+  }
+  printf("✔");
+}
+
 void IsTrue(int a) {
   if (!a) {
     printf("✖\n");
@@ -203,4 +214,20 @@ CCupMessage_t CCGet(std::string name) {
 
   pthread_mutex_unlock(&inboundMessageMutexes[name]);
   return message;
+}
+
+//Test the test
+//#####################################
+void CCSelfTest() {
+  Describe("CCup Test", function() {
+    It("Can send and receive", _function() {
+      const char message[] = "This is a message";
+      CCSend("CCSelfTest", message, sizeof(message));
+
+      CCupMessage_t msg = CCGet("CCSelfTest");
+
+      IsEqualStrings(msg.data, "This is a message");
+      Done();
+    });
+  });
 }
