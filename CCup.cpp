@@ -270,7 +270,6 @@ void CCSelfTest() {
       unsigned char a[] = {0, 1, 2, 3, 4};
       unsigned char b[] = {0, 1, 2, 3, 4};
       IsEqualData(a, b, sizeof(a));
-      b[0] = 3;
       IsEqualData(b, a, sizeof(a));
     });
   });
