@@ -56,9 +56,11 @@ struct CCupMessage_t {
 
 //Send a message
 void CCSend(std::string name, const char *data, int len);
+void CCSend(std::string name, int value);
 
 //Get a message (Block until)
 CCupMessage_t CCGet(std::string name);
+int CCGetValue(std::string name);
 
 //Enable / Disable a message
 void CCOn(std::string name);

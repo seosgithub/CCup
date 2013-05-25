@@ -25,6 +25,22 @@ int main() {
           IsTrue(!strcmp(message.data, "lol?"));
           done();
         });
+
+        It("Can pass messages as integer values", function() {
+          CCSend("Another", 7);
+          int value = CCGetValue("Another");
+          IsEqual(value, 7);
+        });
+
+        It("Can pass messages as integer values (multiple)", function() {
+          CCSend("Another", 3);
+          CCSend("Another", 4);
+          int value = CCGetValue("Another");
+          IsEqual(value, 3);
+          value = CCGetValue("Another");
+          IsEqual(value, 4);
+        });
+
       });
   });
 

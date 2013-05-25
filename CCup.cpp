@@ -237,6 +237,10 @@ void CCSend(std::string name, const char *data, int len) {
   pthread_mutex_unlock(&inboundMessageMutexes[name]);
 }
 
+void CCSend(std::string name, int value) {
+  CCSend(name, (char *)&value, sizeof(int));
+}
+
 void CCOff(std::string name) {
   inactiveQueNames.push_back(name);
 }
@@ -267,6 +271,11 @@ CCupMessage_t CCGet(std::string name) {
 
   pthread_mutex_unlock(&inboundMessageMutexes[name]);
   return message;
+}
+
+int CCGetValue(std::string name) {
+  CCupMessage_t message = CCGet(name);
+  return *(int *)message.data;
 }
 
 //Test the test
@@ -303,6 +312,8 @@ void CCSelfTest() {
     });
 
     It("Can start listening for messages, ignore, then restart again", _function() {
+      CCOn("CCSelfTest3");
+
       const char message[] = "Message 1";
       CCSend("CCSelfTest3", message, sizeof(message));
 
