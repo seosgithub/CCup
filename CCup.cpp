@@ -55,6 +55,7 @@ void *CCupThread(void *_tests) {
 
 //Setup CCup
 void CCup(UnitTests tests) {
+  CCNetworkBegin();
   pthread_t ccupThread;
   pthread_create(&ccupThread, NULL, CCupThread, tests);
 }
@@ -225,6 +226,8 @@ void CCSend(std::string name, const char *data, int len) {
   if (std::find(inactiveQueNames.begin(), inactiveQueNames.end(), name) != inactiveQueNames.end()) {
     return;
   }
+
+  CCNetSend(name, (unsigned char *)data, len);
   
   pthread_mutex_lock(&inboundMessageMutexes[name]);
 
@@ -266,8 +269,12 @@ CCupMessage_t CCGet(std::string name) {
 
   pthread_mutex_lock(&inboundMessageMutexes[name]);
 
+  int startingLength = GetMessageQue(name).size();
+
   message = GetMessageQue(name).front();
   GetMessageQue(name).pop();
+
+  int endingLength = GetMessageQue(name).size();
 
   pthread_mutex_unlock(&inboundMessageMutexes[name]);
   return message;
@@ -278,13 +285,23 @@ int CCGetValue(std::string name) {
   return *(int *)message.data;
 }
 
-int CCNumFor(std::string name) {
-  return GetMessageQue(name).size();
+int CCCount(std::string name) {
+  pthread_mutex_lock(&inboundMessageMutexes[name]);
+
+  int length = GetMessageQue(name).size();
+
+  pthread_mutex_unlock(&inboundMessageMutexes[name]);
+
+  return length;
 }
 
 void CCReset(std::string name) {
+  pthread_mutex_lock(&inboundMessageMutexes[name]);
+
   for (int i = 0; i < GetMessageQue(name).size(); ++i)
     GetMessageQue(name).pop();
+
+  pthread_mutex_unlock(&inboundMessageMutexes[name]);
 }
 
 //Test the test

@@ -10,6 +10,7 @@
 #include <map>
 #include <string>
 #include <queue>
+#include "Network.h"
 
 //Useful to check in files to see what sections to exclude
 #define CCUP
@@ -63,7 +64,7 @@ CCupMessage_t CCGet(std::string name);
 int CCGetValue(std::string name);
 
 //Get the number of messages in the que
-int CCNumFor(std::string name);
+int CCCount(std::string name);
 
 //Reset que
 void CCReset(std::string name);

@@ -1,5 +1,6 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/ccup.dir/CCup.cpp.o"
+  "CMakeFiles/ccup.dir/Network.cpp.o"
   "libccup.pdb"
   "libccup.a"
 )

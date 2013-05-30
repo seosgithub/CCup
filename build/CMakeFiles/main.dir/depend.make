@@ -3,7 +3,12 @@
 
 CMakeFiles/main.dir/CCup.cpp.o: ../CCup.cpp
 CMakeFiles/main.dir/CCup.cpp.o: ../CCup.h
+CMakeFiles/main.dir/CCup.cpp.o: ../Network.h
+
+CMakeFiles/main.dir/Network.cpp.o: ../Network.cpp
+CMakeFiles/main.dir/Network.cpp.o: ../Network.h
 
 CMakeFiles/main.dir/main.cpp.o: ../CCup.h
+CMakeFiles/main.dir/main.cpp.o: ../Network.h
 CMakeFiles/main.dir/main.cpp.o: ../main.cpp
 

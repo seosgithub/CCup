@@ -6,27 +6,23 @@
 
 #IncludeRegexTransform: 
 
-/Users/seo/Dev/CCup/CCup.cpp
-CCup.h
-/Users/seo/Dev/CCup/CCup.h
+/Users/seo/Dev/CCup/Network.cpp
+Network.h
+/Users/seo/Dev/CCup/Network.h
 
-/Users/seo/Dev/CCup/CCup.h
+/Users/seo/Dev/CCup/Network.h
 stdio.h
 -
 stdlib.h
 -
-pthread.h
--
-semaphore.h
--
-unistd.h
--
-errno.h
--
-map
--
 string
 -
-queue
+sys/types.h
+-
+sys/socket.h
+-
+netinet/in.h
+-
+arpa/inet.h
 -
 

@@ -35,7 +35,7 @@ int main() {
         It("Knows how many messages are left in the que", function() {
             CCSend("Test", 4);
             CCSend("Test", 4);
-            int numberWaiting = CCNumFor("Test");
+            int numberWaiting = CCCount("Test");
             IsEqual(numberWaiting, 2);
         });
 
@@ -43,7 +43,7 @@ int main() {
             CCSend("Test", 4);
             CCSend("Test", 4);
             CCReset("Test");
-            int numberWaiting = CCNumFor("Test");
+            int numberWaiting = CCCount("Test");
             IsEqual(numberWaiting, 2);
         });
 

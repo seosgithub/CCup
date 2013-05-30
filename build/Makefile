@@ -154,6 +154,33 @@ CCup.cpp.s:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/CCup.cpp.s
 .PHONY : CCup.cpp.s
 
+Network.o: Network.cpp.o
+.PHONY : Network.o
+
+# target to build an object file
+Network.cpp.o:
+	$(MAKE) -f CMakeFiles/ccup.dir/build.make CMakeFiles/ccup.dir/Network.cpp.o
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Network.cpp.o
+.PHONY : Network.cpp.o
+
+Network.i: Network.cpp.i
+.PHONY : Network.i
+
+# target to preprocess a source file
+Network.cpp.i:
+	$(MAKE) -f CMakeFiles/ccup.dir/build.make CMakeFiles/ccup.dir/Network.cpp.i
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Network.cpp.i
+.PHONY : Network.cpp.i
+
+Network.s: Network.cpp.s
+.PHONY : Network.s
+
+# target to generate assembly for a file
+Network.cpp.s:
+	$(MAKE) -f CMakeFiles/ccup.dir/build.make CMakeFiles/ccup.dir/Network.cpp.s
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Network.cpp.s
+.PHONY : Network.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -191,6 +218,9 @@ help:
 	@echo "... CCup.o"
 	@echo "... CCup.i"
 	@echo "... CCup.s"
+	@echo "... Network.o"
+	@echo "... Network.i"
+	@echo "... Network.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

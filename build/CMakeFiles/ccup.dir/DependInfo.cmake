@@ -5,6 +5,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
   "/Users/seo/Dev/CCup/CCup.cpp" "/Users/seo/Dev/CCup/build/CMakeFiles/ccup.dir/CCup.cpp.o"
+  "/Users/seo/Dev/CCup/Network.cpp" "/Users/seo/Dev/CCup/build/CMakeFiles/ccup.dir/Network.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "Clang")
 

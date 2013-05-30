@@ -3,4 +3,8 @@
 
 CMakeFiles/ccup.dir/CCup.cpp.o: ../CCup.cpp
 CMakeFiles/ccup.dir/CCup.cpp.o: ../CCup.h
+CMakeFiles/ccup.dir/CCup.cpp.o: ../Network.h
+
+CMakeFiles/ccup.dir/Network.cpp.o: ../Network.cpp
+CMakeFiles/ccup.dir/Network.cpp.o: ../Network.h
 
