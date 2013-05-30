@@ -7,6 +7,8 @@ def install
   Dir.chdir '../'
   system 'cp CCup.h /usr/local/include'
   system 'cp build/libccup.a /usr/local/lib'
+  system 'cp ccc.rb /usr/local/bin'
+  system 'cp ccc /usr/local/bin'
 end
 
 def remove
