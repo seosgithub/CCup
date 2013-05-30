@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/Users/seo/Dev/CCup/CCup.cpp
+CCup.h
+/Users/seo/Dev/CCup/CCup.h
+
 /Users/seo/Dev/CCup/CCup.h
 stdio.h
 -
@@ -25,10 +29,4 @@ string
 -
 queue
 -
-
-/Users/seo/Dev/CCup/main.cpp
-stdio.h
--
-CCup.h
-/Users/seo/Dev/CCup/CCup.h
 

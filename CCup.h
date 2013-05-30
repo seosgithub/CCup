@@ -62,7 +62,13 @@ void CCSend(std::string name, int value);
 CCupMessage_t CCGet(std::string name);
 int CCGetValue(std::string name);
 
-//Enable / Disable a message
+//Get the number of messages in the que
+int CCNumFor(std::string name);
+
+//Reset que
+void CCReset(std::string name);
+
+//Enable / Disable a message (Enabled by default)
 void CCOn(std::string name);
 void CCOff(std::string name);
 

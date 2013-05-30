@@ -32,6 +32,22 @@ int main() {
           IsEqual(value, 7);
         });
 
+        It("Knows how many messages are left in the que", function() {
+            CCSend("Test", 4);
+            CCSend("Test", 4);
+            int numberWaiting = CCNumFor("Test");
+            IsEqual(numberWaiting, 2);
+        });
+
+        It("Can reset the que", function() {
+            CCSend("Test", 4);
+            CCSend("Test", 4);
+            CCReset("Test");
+            int numberWaiting = CCNumFor("Test");
+            IsEqual(numberWaiting, 2);
+        });
+
+
         It("Can pass messages as integer values (multiple)", function() {
           CCSend("Another", 3);
           CCSend("Another", 4);

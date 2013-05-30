@@ -278,6 +278,15 @@ int CCGetValue(std::string name) {
   return *(int *)message.data;
 }
 
+int CCNumFor(std::string name) {
+  return GetMessageQue(name).size();
+}
+
+void CCReset(std::string name) {
+  for (int i = 0; i < GetMessageQue(name).size(); ++i)
+    GetMessageQue(name).pop();
+}
+
 //Test the test
 //#####################################
 void CCSelfTest() {
