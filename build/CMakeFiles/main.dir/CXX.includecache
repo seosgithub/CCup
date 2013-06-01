@@ -47,6 +47,8 @@ CCNetwork.h
 /Users/seo/Dev/CCup/main.cpp
 stdio.h
 -
+pthread.h
+-
 CCup.h
 /Users/seo/Dev/CCup/CCup.h
 

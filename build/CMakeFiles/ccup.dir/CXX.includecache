@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/Users/seo/Dev/CCup/CCNetwork.cpp
-CCNetwork.h
-/Users/seo/Dev/CCup/CCNetwork.h
-
 /Users/seo/Dev/CCup/CCNetwork.h
 stdio.h
 -
@@ -25,4 +21,30 @@ netinet/in.h
 -
 arpa/inet.h
 -
+
+/Users/seo/Dev/CCup/CCup.cpp
+CCup.h
+/Users/seo/Dev/CCup/CCup.h
+
+/Users/seo/Dev/CCup/CCup.h
+stdio.h
+-
+stdlib.h
+-
+pthread.h
+-
+semaphore.h
+-
+unistd.h
+-
+errno.h
+-
+map
+-
+string
+-
+queue
+-
+CCNetwork.h
+/Users/seo/Dev/CCup/CCNetwork.h
 

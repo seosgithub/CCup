@@ -185,7 +185,7 @@ void CreateSemaphore(std::string name) {
 
   //Create a semaphore
   inboundMessageSemaphores[name] = sem_open(randomName, O_CREAT, O_RDWR, 0);
-  if (inboundMessageSemaphores[name] < 0) {
+  if (inboundMessageSemaphores[name] == NULL) {
     fprintf(stderr, "Could not create semaphore for CCup messages!  Error code: %d\n", errno);
     exit(EXIT_FAILURE);
   }
@@ -194,7 +194,7 @@ void CreateSemaphore(std::string name) {
 void CreateMutex(std::string name) {
   //Create a mutex
   int res = pthread_mutex_init(&inboundMessageMutexes[name], NULL);
-  if (res < 0) {
+  if (res != 0) {
     fprintf(stderr, "Could not create mutex for CCup messages!  Error code: %d\n", errno);
     exit(EXIT_FAILURE);
   }
@@ -220,6 +220,8 @@ void LazyLoadQue(std::string name) {
 }
 
 void CCSend(std::string name, const char *data, int len) {
+  static int id = 0;
+  ++id;
   LazyLoadQue(name);
 
   //This is an inactive que
@@ -229,7 +231,9 @@ void CCSend(std::string name, const char *data, int len) {
 
   CCNetSend(name, (unsigned char *)data, len);
   
+  //printf("CCSend%d Waiting for lock\n", id);
   pthread_mutex_lock(&inboundMessageMutexes[name]);
+  printf("CCSend%d Locked\n", id);
 
   CCupMessage_t message;
   memcpy(&message.data, data, len);
@@ -237,7 +241,9 @@ void CCSend(std::string name, const char *data, int len) {
   inboundMessages[name].push(message);
   sem_post(inboundMessageSemaphores[name]);
 
+  //printf("CCSend%d About to unlock\n", id);
   pthread_mutex_unlock(&inboundMessageMutexes[name]);
+  printf("CCSend%d Unlocked\n", id);
 }
 
 void CCSend(std::string name, int value) {
@@ -262,12 +268,16 @@ CCupMessage_t CCGet(std::string name) {
 
   //Wait for a message
   int res = sem_wait(inboundMessageSemaphores[name]);
-  if (res < 0) {
+  if (res != 0) {
     fprintf(stderr, "Tried to wait for semaphore, got error code: %i\n", errno);
     exit(EXIT_FAILURE);
   }
 
+  static int id = 0;
+  ++id;
+
   pthread_mutex_lock(&inboundMessageMutexes[name]);
+  printf("CCGet%d Locked\n", id);
 
   int startingLength = GetMessageQue(name).size();
 
@@ -277,6 +287,8 @@ CCupMessage_t CCGet(std::string name) {
   int endingLength = GetMessageQue(name).size();
 
   pthread_mutex_unlock(&inboundMessageMutexes[name]);
+  printf("CCGet%d Unlocked\n", id);
+
   return message;
 }
 

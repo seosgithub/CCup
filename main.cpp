@@ -1,5 +1,28 @@
 #include <stdio.h>
+#include <pthread.h>
 #include "CCup.h"
+
+void *ThreadA(void *a) {
+  for (int i = 0; i < 2; ++i) {
+    CCSend("Test", "ThreadA", 8);
+    CCSend("Test", "ThreadA", 8);
+    //CCGet("Test");
+    printf("A\n");
+  }
+
+  return NULL;
+}
+
+void *ThreadB(void *b) {
+  for (int i = 0; i < 1000; ++i) {
+    CCSend("Test", "ThreadB", 8);
+    CCSend("Test", "ThreadB", 8);
+    CCGet("Test");
+    printf("B\n");
+  }
+
+  return NULL;
+}
 
 int main() {
   //Regular
@@ -59,15 +82,44 @@ int main() {
         //});
 
       //});
-  /*});*/
+  //});
+
+  //[>CCup(function() {<]
+      ////CCSend("Test", "hello", 5);
+      ////char data[] = {1, 1, 0};
+      ////CCSend("Rawr", data, sizeof(data));
+  /*[>});<]*/
 
   CCup(function() {
-      CCSend("Test", "hello", 5);
-      char data[] = {1, 1, 0};
-      CCSend("Rawr", data, sizeof(data));
+    puts("Starting CCup");
+
+    //Attempt to send data in multiple threads
+    pthread_t threadA;
+    pthread_t threadB;
+    int res = pthread_create(&threadA, NULL, ThreadA, NULL);
+    if (res != 0) {
+      fprintf(stderr, "Pthread could not create thread A\n");
+      exit(EXIT_FAILURE);
+    }
+
+    /*res = pthread_create(&threadB, NULL, ThreadB, NULL);*/
+    //if (res != 0) {
+      //fprintf(stderr, "Pthread could not create thread B\n");
+      //exit(EXIT_FAILURE);
+    /*}*/
+
+    sleep(1);
+    for (int i = 0 ; i < 4; ++i)
+      CCGet("Test");
+
+
+    Describe("Threading is supported", function() {
+      IsEqual(CCCount("Test"), 0);
+    });
   });
 
   while (true) {
+    sleep(1);
   }
 
   return 0;
