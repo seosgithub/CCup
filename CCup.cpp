@@ -220,8 +220,6 @@ void LazyLoadQue(std::string name) {
 }
 
 void CCSend(std::string name, const char *data, int len) {
-  static int id = 0;
-  ++id;
   LazyLoadQue(name);
 
   //This is an inactive que
@@ -233,7 +231,6 @@ void CCSend(std::string name, const char *data, int len) {
   
   //printf("CCSend%d Waiting for lock\n", id);
   pthread_mutex_lock(&inboundMessageMutexes[name]);
-  printf("CCSend%d Locked\n", id);
 
   CCupMessage_t message;
   memcpy(&message.data, data, len);
@@ -243,7 +240,6 @@ void CCSend(std::string name, const char *data, int len) {
 
   //printf("CCSend%d About to unlock\n", id);
   pthread_mutex_unlock(&inboundMessageMutexes[name]);
-  printf("CCSend%d Unlocked\n", id);
 }
 
 void CCSend(std::string name, int value) {
@@ -273,11 +269,7 @@ CCupMessage_t CCGet(std::string name) {
     exit(EXIT_FAILURE);
   }
 
-  static int id = 0;
-  ++id;
-
   pthread_mutex_lock(&inboundMessageMutexes[name]);
-  printf("CCGet%d Locked\n", id);
 
   int startingLength = GetMessageQue(name).size();
 
@@ -287,7 +279,6 @@ CCupMessage_t CCGet(std::string name) {
   int endingLength = GetMessageQue(name).size();
 
   pthread_mutex_unlock(&inboundMessageMutexes[name]);
-  printf("CCGet%d Unlocked\n", id);
 
   return message;
 }
