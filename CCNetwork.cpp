@@ -1,4 +1,4 @@
-#include "Network.h"
+#include "CCNetwork.h"
 
 static sockaddr_in addr;
 static int sock;
@@ -20,8 +20,8 @@ void CCNetworkBegin() {
 void CCNetSend(std::string name, unsigned char *message, int len) {
   struct {
     char name[100];
+    unsigned char len;
     unsigned char message[200];
-    int len;
   } buffer;
 
   strcpy(buffer.name, name.c_str());

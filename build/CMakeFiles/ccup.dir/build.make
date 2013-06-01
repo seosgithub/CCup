@@ -75,39 +75,39 @@ CMakeFiles/ccup.dir/CCup.cpp.o.provides: CMakeFiles/ccup.dir/CCup.cpp.o.requires
 
 CMakeFiles/ccup.dir/CCup.cpp.o.provides.build: CMakeFiles/ccup.dir/CCup.cpp.o
 
-CMakeFiles/ccup.dir/Network.cpp.o: CMakeFiles/ccup.dir/flags.make
-CMakeFiles/ccup.dir/Network.cpp.o: ../Network.cpp
+CMakeFiles/ccup.dir/CCNetwork.cpp.o: CMakeFiles/ccup.dir/flags.make
+CMakeFiles/ccup.dir/CCNetwork.cpp.o: ../CCNetwork.cpp
 	$(CMAKE_COMMAND) -E cmake_progress_report /Users/seo/Dev/CCup/build/CMakeFiles $(CMAKE_PROGRESS_2)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/ccup.dir/Network.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ccup.dir/Network.cpp.o -c /Users/seo/Dev/CCup/Network.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/ccup.dir/CCNetwork.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ccup.dir/CCNetwork.cpp.o -c /Users/seo/Dev/CCup/CCNetwork.cpp
 
-CMakeFiles/ccup.dir/Network.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ccup.dir/Network.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/seo/Dev/CCup/Network.cpp > CMakeFiles/ccup.dir/Network.cpp.i
+CMakeFiles/ccup.dir/CCNetwork.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ccup.dir/CCNetwork.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/seo/Dev/CCup/CCNetwork.cpp > CMakeFiles/ccup.dir/CCNetwork.cpp.i
 
-CMakeFiles/ccup.dir/Network.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ccup.dir/Network.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/seo/Dev/CCup/Network.cpp -o CMakeFiles/ccup.dir/Network.cpp.s
+CMakeFiles/ccup.dir/CCNetwork.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ccup.dir/CCNetwork.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/seo/Dev/CCup/CCNetwork.cpp -o CMakeFiles/ccup.dir/CCNetwork.cpp.s
 
-CMakeFiles/ccup.dir/Network.cpp.o.requires:
-.PHONY : CMakeFiles/ccup.dir/Network.cpp.o.requires
+CMakeFiles/ccup.dir/CCNetwork.cpp.o.requires:
+.PHONY : CMakeFiles/ccup.dir/CCNetwork.cpp.o.requires
 
-CMakeFiles/ccup.dir/Network.cpp.o.provides: CMakeFiles/ccup.dir/Network.cpp.o.requires
-	$(MAKE) -f CMakeFiles/ccup.dir/build.make CMakeFiles/ccup.dir/Network.cpp.o.provides.build
-.PHONY : CMakeFiles/ccup.dir/Network.cpp.o.provides
+CMakeFiles/ccup.dir/CCNetwork.cpp.o.provides: CMakeFiles/ccup.dir/CCNetwork.cpp.o.requires
+	$(MAKE) -f CMakeFiles/ccup.dir/build.make CMakeFiles/ccup.dir/CCNetwork.cpp.o.provides.build
+.PHONY : CMakeFiles/ccup.dir/CCNetwork.cpp.o.provides
 
-CMakeFiles/ccup.dir/Network.cpp.o.provides.build: CMakeFiles/ccup.dir/Network.cpp.o
+CMakeFiles/ccup.dir/CCNetwork.cpp.o.provides.build: CMakeFiles/ccup.dir/CCNetwork.cpp.o
 
 # Object files for target ccup
 ccup_OBJECTS = \
 "CMakeFiles/ccup.dir/CCup.cpp.o" \
-"CMakeFiles/ccup.dir/Network.cpp.o"
+"CMakeFiles/ccup.dir/CCNetwork.cpp.o"
 
 # External object files for target ccup
 ccup_EXTERNAL_OBJECTS =
 
 libccup.a: CMakeFiles/ccup.dir/CCup.cpp.o
-libccup.a: CMakeFiles/ccup.dir/Network.cpp.o
+libccup.a: CMakeFiles/ccup.dir/CCNetwork.cpp.o
 libccup.a: CMakeFiles/ccup.dir/build.make
 libccup.a: CMakeFiles/ccup.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX static library libccup.a"
@@ -119,7 +119,7 @@ CMakeFiles/ccup.dir/build: libccup.a
 .PHONY : CMakeFiles/ccup.dir/build
 
 CMakeFiles/ccup.dir/requires: CMakeFiles/ccup.dir/CCup.cpp.o.requires
-CMakeFiles/ccup.dir/requires: CMakeFiles/ccup.dir/Network.cpp.o.requires
+CMakeFiles/ccup.dir/requires: CMakeFiles/ccup.dir/CCNetwork.cpp.o.requires
 .PHONY : CMakeFiles/ccup.dir/requires
 
 CMakeFiles/ccup.dir/clean:

@@ -1,5 +1,5 @@
-#ifndef NETWORK_H_
-#define NETWORK_H_
+#ifndef CC_NETWORK_H_
+#define CC_NETWORK_H_
 
 #define CCUP_PORT 3334
 #define CCUP_IP "224.4.5.6"

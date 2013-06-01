@@ -98,41 +98,41 @@ CMakeFiles/main.dir/CCup.cpp.o.provides: CMakeFiles/main.dir/CCup.cpp.o.requires
 
 CMakeFiles/main.dir/CCup.cpp.o.provides.build: CMakeFiles/main.dir/CCup.cpp.o
 
-CMakeFiles/main.dir/Network.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/Network.cpp.o: ../Network.cpp
+CMakeFiles/main.dir/CCNetwork.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/CCNetwork.cpp.o: ../CCNetwork.cpp
 	$(CMAKE_COMMAND) -E cmake_progress_report /Users/seo/Dev/CCup/build/CMakeFiles $(CMAKE_PROGRESS_3)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/main.dir/Network.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/main.dir/Network.cpp.o -c /Users/seo/Dev/CCup/Network.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/main.dir/CCNetwork.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/main.dir/CCNetwork.cpp.o -c /Users/seo/Dev/CCup/CCNetwork.cpp
 
-CMakeFiles/main.dir/Network.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/Network.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/seo/Dev/CCup/Network.cpp > CMakeFiles/main.dir/Network.cpp.i
+CMakeFiles/main.dir/CCNetwork.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/CCNetwork.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/seo/Dev/CCup/CCNetwork.cpp > CMakeFiles/main.dir/CCNetwork.cpp.i
 
-CMakeFiles/main.dir/Network.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/Network.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/seo/Dev/CCup/Network.cpp -o CMakeFiles/main.dir/Network.cpp.s
+CMakeFiles/main.dir/CCNetwork.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/CCNetwork.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/seo/Dev/CCup/CCNetwork.cpp -o CMakeFiles/main.dir/CCNetwork.cpp.s
 
-CMakeFiles/main.dir/Network.cpp.o.requires:
-.PHONY : CMakeFiles/main.dir/Network.cpp.o.requires
+CMakeFiles/main.dir/CCNetwork.cpp.o.requires:
+.PHONY : CMakeFiles/main.dir/CCNetwork.cpp.o.requires
 
-CMakeFiles/main.dir/Network.cpp.o.provides: CMakeFiles/main.dir/Network.cpp.o.requires
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Network.cpp.o.provides.build
-.PHONY : CMakeFiles/main.dir/Network.cpp.o.provides
+CMakeFiles/main.dir/CCNetwork.cpp.o.provides: CMakeFiles/main.dir/CCNetwork.cpp.o.requires
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/CCNetwork.cpp.o.provides.build
+.PHONY : CMakeFiles/main.dir/CCNetwork.cpp.o.provides
 
-CMakeFiles/main.dir/Network.cpp.o.provides.build: CMakeFiles/main.dir/Network.cpp.o
+CMakeFiles/main.dir/CCNetwork.cpp.o.provides.build: CMakeFiles/main.dir/CCNetwork.cpp.o
 
 # Object files for target main
 main_OBJECTS = \
 "CMakeFiles/main.dir/main.cpp.o" \
 "CMakeFiles/main.dir/CCup.cpp.o" \
-"CMakeFiles/main.dir/Network.cpp.o"
+"CMakeFiles/main.dir/CCNetwork.cpp.o"
 
 # External object files for target main
 main_EXTERNAL_OBJECTS =
 
 main: CMakeFiles/main.dir/main.cpp.o
 main: CMakeFiles/main.dir/CCup.cpp.o
-main: CMakeFiles/main.dir/Network.cpp.o
+main: CMakeFiles/main.dir/CCNetwork.cpp.o
 main: CMakeFiles/main.dir/build.make
 main: CMakeFiles/main.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable main"
@@ -144,7 +144,7 @@ CMakeFiles/main.dir/build: main
 
 CMakeFiles/main.dir/requires: CMakeFiles/main.dir/main.cpp.o.requires
 CMakeFiles/main.dir/requires: CMakeFiles/main.dir/CCup.cpp.o.requires
-CMakeFiles/main.dir/requires: CMakeFiles/main.dir/Network.cpp.o.requires
+CMakeFiles/main.dir/requires: CMakeFiles/main.dir/CCNetwork.cpp.o.requires
 .PHONY : CMakeFiles/main.dir/requires
 
 CMakeFiles/main.dir/clean:

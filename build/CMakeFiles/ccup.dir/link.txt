@@ -1,2 +1,2 @@
-/usr/bin/ar cr libccup.a  CMakeFiles/ccup.dir/CCup.cpp.o CMakeFiles/ccup.dir/Network.cpp.o
+/usr/bin/ar cr libccup.a  CMakeFiles/ccup.dir/CCup.cpp.o CMakeFiles/ccup.dir/CCNetwork.cpp.o
 /usr/bin/ranlib libccup.a

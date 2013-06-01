@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/Users/seo/Dev/CCup/Network.cpp
-Network.h
-/Users/seo/Dev/CCup/Network.h
+/Users/seo/Dev/CCup/CCNetwork.cpp
+CCNetwork.h
+/Users/seo/Dev/CCup/CCNetwork.h
 
-/Users/seo/Dev/CCup/Network.h
+/Users/seo/Dev/CCup/CCNetwork.h
 stdio.h
 -
 stdlib.h

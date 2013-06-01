@@ -10,7 +10,7 @@
 #include <map>
 #include <string>
 #include <queue>
-#include "Network.h"
+#include "CCNetwork.h"
 
 //Useful to check in files to see what sections to exclude
 #define CCUP

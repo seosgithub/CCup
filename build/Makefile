@@ -127,6 +127,33 @@ main/fast:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
 .PHONY : main/fast
 
+CCNetwork.o: CCNetwork.cpp.o
+.PHONY : CCNetwork.o
+
+# target to build an object file
+CCNetwork.cpp.o:
+	$(MAKE) -f CMakeFiles/ccup.dir/build.make CMakeFiles/ccup.dir/CCNetwork.cpp.o
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/CCNetwork.cpp.o
+.PHONY : CCNetwork.cpp.o
+
+CCNetwork.i: CCNetwork.cpp.i
+.PHONY : CCNetwork.i
+
+# target to preprocess a source file
+CCNetwork.cpp.i:
+	$(MAKE) -f CMakeFiles/ccup.dir/build.make CMakeFiles/ccup.dir/CCNetwork.cpp.i
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/CCNetwork.cpp.i
+.PHONY : CCNetwork.cpp.i
+
+CCNetwork.s: CCNetwork.cpp.s
+.PHONY : CCNetwork.s
+
+# target to generate assembly for a file
+CCNetwork.cpp.s:
+	$(MAKE) -f CMakeFiles/ccup.dir/build.make CMakeFiles/ccup.dir/CCNetwork.cpp.s
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/CCNetwork.cpp.s
+.PHONY : CCNetwork.cpp.s
+
 CCup.o: CCup.cpp.o
 .PHONY : CCup.o
 
@@ -153,33 +180,6 @@ CCup.cpp.s:
 	$(MAKE) -f CMakeFiles/ccup.dir/build.make CMakeFiles/ccup.dir/CCup.cpp.s
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/CCup.cpp.s
 .PHONY : CCup.cpp.s
-
-Network.o: Network.cpp.o
-.PHONY : Network.o
-
-# target to build an object file
-Network.cpp.o:
-	$(MAKE) -f CMakeFiles/ccup.dir/build.make CMakeFiles/ccup.dir/Network.cpp.o
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Network.cpp.o
-.PHONY : Network.cpp.o
-
-Network.i: Network.cpp.i
-.PHONY : Network.i
-
-# target to preprocess a source file
-Network.cpp.i:
-	$(MAKE) -f CMakeFiles/ccup.dir/build.make CMakeFiles/ccup.dir/Network.cpp.i
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Network.cpp.i
-.PHONY : Network.cpp.i
-
-Network.s: Network.cpp.s
-.PHONY : Network.s
-
-# target to generate assembly for a file
-Network.cpp.s:
-	$(MAKE) -f CMakeFiles/ccup.dir/build.make CMakeFiles/ccup.dir/Network.cpp.s
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Network.cpp.s
-.PHONY : Network.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -215,12 +215,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... main"
 	@echo "... rebuild_cache"
+	@echo "... CCNetwork.o"
+	@echo "... CCNetwork.i"
+	@echo "... CCNetwork.s"
 	@echo "... CCup.o"
 	@echo "... CCup.i"
 	@echo "... CCup.s"
-	@echo "... Network.o"
-	@echo "... Network.i"
-	@echo "... Network.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
