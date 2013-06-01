@@ -14,6 +14,10 @@ end
 IP = "224.4.5.6"
 PORT = 3334
 
+print "CCC".green
+print " Waiting on #{IP}:#{PORT}\n"
+puts "===================================================="
+
 ip = IPAddr.new(IP).hton + IPAddr.new("0.0.0.0").hton
 
 sock = UDPSocket.new
